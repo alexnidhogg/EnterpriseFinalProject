@@ -8,8 +8,6 @@ namespace EnterpriseFinalProject.Models
     public class Team
     {
         public int ID { get; set; }
-        public int Record { get; set; }
-        public int roster { get; set; }
         public string Name { get; set; }
         public string Manager { get; set; }
         public string Coach { get; set; }

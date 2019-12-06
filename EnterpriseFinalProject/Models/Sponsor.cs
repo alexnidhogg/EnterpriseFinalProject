@@ -5,10 +5,9 @@ using System.Web;
 
 namespace EnterpriseFinalProject.Models
 {
-    public class Roster
+    public class Sponsor
     {
-        public int ID { get; set; }
-        public int TeamID { get; set; }
-        public int[] Players { get; set; }
+        public int Team { get; set; }
+        public String Name { get; set; }
     }
 }

@@ -105,24 +105,14 @@ namespace EnterpriseFinalProject.DAL
                 new Player{Name="Fernande Bosse", ID=89, Number=15, Position="Goalie", TeamID=5 }
             };
             Players.ForEach(s => context.Players.Add(s));
-            List<Roster> Rosters = new List<Roster>
-            {
-               new Roster{ID=0, TeamID=0, Players=new int[] {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14} },
-               new Roster{ID=1, TeamID=1, Players=new int[] {15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 } },
-               new Roster{ID=2, TeamID=2, Players=new int[] {30,31,32,33,34,35,36,37,38,39,40,41,42,43,44 } },
-               new Roster{ID=3, TeamID=3, Players=new int[] {45,46,47,48,49,50,51,52,53,54,55,56,57,58,59 } },
-               new Roster{ID=4, TeamID=4, Players=new int[] {60,61,62,63,64,65,66,67,68,69,70,71,72,73,74 } },
-               new Roster{ID=5, TeamID=5, Players=new int[] {75,76,77,78,79,80,81,82,83,84,85,86,87,88,89 } }
-            };
-            Rosters.ForEach(s => context.Rosters.Add(s));
             List<Team> Teams = new List<Team>
             {
-                new Team{ID=0, Name="Boston Bruins", Coach="Jim James", Manager="Doug Dimmadome", Record=0, roster=0},
-                new Team{ID=1, Name="Toronto Maple Leafs", Coach="Stan Steele", Manager="Leslie Lao", Record=1, roster=1},
-                new Team{ID=2, Name="Montreal Canadiens", Coach="Paul Pile", Manager="Paul Pile", Record=2, roster=2 },
-                new Team{ID=3, Name="Chicago Black Hawks", Coach="Tyreese Tyrone", Manager="Jamal James", roster=3, Record=3},
-                new Team{ID=4, Name="Detroit Red Wings", Coach="Dan Dan", Manager="Stan Stan", roster=4, Record=4},
-                new Team{ID=5, Name="New York Rangers", Coach="Munkee Man", Manager="Dunkee Dan", roster=5, Record=5}
+                new Team{ID=0, Name="Boston Bruins", Coach="Jim James", Manager="Doug Dimmadome"},
+                new Team{ID=1, Name="Toronto Maple Leafs", Coach="Stan Steele", Manager="Leslie Lao"},
+                new Team{ID=2, Name="Montreal Canadiens", Coach="Paul Pile", Manager="Paul Pile"},
+                new Team{ID=3, Name="Chicago Black Hawks", Coach="Tyreese Tyrone", Manager="Jamal James"},
+                new Team{ID=4, Name="Detroit Red Wings", Coach="Dan Dan", Manager="Stan Stan"},
+                new Team{ID=5, Name="New York Rangers", Coach="Munkee Man", Manager="Dunkee Dan"}
             };
             Teams.ForEach(s => context.Teams.Add(s));
             List<WinLoss> Wins = new List<WinLoss>
@@ -189,16 +179,16 @@ namespace EnterpriseFinalProject.DAL
                 new WinLoss{Winner=0, Loser=5, ID=59}
             };
             Wins.ForEach(s => context.Games.Add(s));
-            List<WinLossRecord> Record = new List<WinLossRecord>
+            List<Sponsor> Sponsors = new List<Sponsor>
             {
-                new WinLossRecord{ID=0, Records=new int[] {0,1,2,3,4,5,10,15,20,25,39,44,46,47,48,50,51,52,54,55,57,59 } },
-                new WinLossRecord{ID=1, Records=new int[] {0,5,6,7,8,9,11,16,21,26,30,32,34,36,43,44,45,48,49,50,52,53,55,56 } },
-                new WinLossRecord{ID=2, Records=new int[] {1,6,10,11,12,13,14,17,22,27,30,32,33,35,39,41,43,45,47,49,53,56,57,58 } },
-                new WinLossRecord{ID=3, Records=new int[] {2,7,12,15,16,17,18,19,23,28,31,33,36,37,38,41,42,46,51,54,58 } },
-                new WinLossRecord{ID=4, Records=new int[] {3,8,13,20,21,22,23,24,29,31,35,38,40 } },
-                new WinLossRecord{ID=5, Records=new int[] {4,9,14,19,24,25,26,27,28,29,34,37,40,42,59 } },
+                new Sponsor{Name="Coca-Cola", Team=0},
+                new Sponsor{Name="Pepsi", Team=1},
+                new Sponsor{Name="Honda", Team=2},
+                new Sponsor{Name="Ford", Team=3},
+                new Sponsor{Name="Tesla", Team=4},
+                new Sponsor{Name="Red Cross", Team=5}
             };
-            Record.ForEach(s => context.Records.Add(s));
+            Sponsors.ForEach(s => context.Sponsors.Add(s));
             context.SaveChanges();
         }
     }
