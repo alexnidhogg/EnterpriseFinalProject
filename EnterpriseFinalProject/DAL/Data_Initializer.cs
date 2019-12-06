@@ -5,6 +5,9 @@ using System.Web;
 using EnterpriseFinalProject.Data_Access;
 using EnterpriseFinalProject.Models;
 
+// Written by Alex Teodorescu
+// Initializes each table in the database with values
+
 namespace EnterpriseFinalProject.DAL
 {
     public class Data_Initializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<Data_Context>
