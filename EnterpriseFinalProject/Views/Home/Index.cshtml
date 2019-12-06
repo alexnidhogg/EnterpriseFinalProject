@@ -9,6 +9,36 @@
 </div>
 
 <div class="row">
+
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+        </tr>
+        @foreach (var item in ViewBag.Players)
+        {
+            <tr>
+                <td>
+                   @item.Name
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                @ViewBag.Text
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Test2
+            </td>
+        </tr>
+    </table>
+
+
+
+
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>
