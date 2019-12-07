@@ -1,0 +1,67 @@
+﻿@model EnterpriseFinalProject.Models.SearchClass
+@using System.Data
+
+<!--- Written by Christopher Reynolds -->
+<!--- This view displays all teams in the team database and their ID's -->
+<!--- The page also leads to a page that displays more info from a given team id -->
+<!--- Set Data for later use -->
+@{
+    ViewBag.Title = "ListTeamDetails";
+    DataSet ds = ViewBag.Team;
+    DataTable dt = ds.Tables[0];
+}
+
+<!---Link To Bootstrap -->
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="center-me">
+        <div>
+            <!--- Table that displays all teams and their Ids -->
+            <table class="table">
+                <tr>
+                    <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                        ID:
+                    </td>
+                    <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                        Name:
+                    </td>
+                </tr>
+
+                <!--- Selects all teams from database -->
+                @foreach (DataRow dr in dt.Rows)
+                {
+                    <tr>
+                        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                            @dr["ID"]
+                        </td>
+                        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                            @dr["Name"]
+                        </td>
+
+                    </tr>
+
+                }
+
+            </table>
+            <!--- Input box for find info on team based on id -->
+            @using (Html.BeginForm("displayID", "Home", FormMethod.Post))
+            {
+                @Html.TextBoxFor(Model => Model.id)
+                <button type="submit">See team details by ID</button>
+            }
+            <br />
+            <!--- Return to main page -->
+            <a class="btn btn-info" onclick="location.href='@Url.Action("HomePage", "Home")'">Back To Home</a>
+            <br />
+        </div>
+    </div>
+</body>
+
+

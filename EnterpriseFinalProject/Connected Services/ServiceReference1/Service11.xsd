@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59687/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TeamService" />
+  <xs:element name="retreveAllPlayers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllPlayersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveAllPlayersResult" nillable="true" type="q1:RetreveAllPlayers" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllPlayerByPosition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pos" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllPlayerByPositionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveAllPlayerByPositionResult" nillable="true" type="q2:RetreveAllPlayerByPosition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllPlayersByTeam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllPlayersByTeamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveAllPlayersByTeamResult" nillable="true" type="q3:RetreveAllPlayersByTeam" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveTeamWinLoss">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveTeamWinLossResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveTeamWinLossResult" nillable="true" type="q4:RetreveTeamWinLoss" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTeamMembber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="utm" nillable="true" type="q5:UpdateTeamMember" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTeamMembberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateTeamMembberResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveTeamDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveTeamDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveTeamDetailsResult" nillable="true" type="q6:RetreveTeamDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveSponsor">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveSponsorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveSponsorResult" nillable="true" type="q7:RetreveSponsor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllTeams">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retreveAllTeamsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TeamService" minOccurs="0" name="retreveAllTeamsResult" nillable="true" type="q8:RetreveAllTeams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

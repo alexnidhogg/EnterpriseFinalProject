@@ -1,0 +1,171 @@
+﻿<!--- Imports serch class model as well as System Data -->
+@using System.Data
+@model EnterpriseFinalProject.Models.SearchClass
+
+<!--- Written By Christopher Reynolds -->
+
+@{
+    <!--- Set data from controller viewbags -->
+    ViewBag.Title = "TableView";
+    DataSet ds = ViewBag.Team;
+    DataSet ds2 = ViewBag.Players;
+    DataSet ds3 = ViewBag.WinLoss;
+    DataSet ds4 = ViewBag.Sponsor;
+    DataTable dt = ds.Tables[0];
+    DataTable dt2 = ds2.Tables[0];
+    DataTable dt3 = ds3.Tables[0];
+    DataTable dt4 = ds4.Tables[0];
+    Array tm = ViewBag.TeamNames;
+
+}
+<!--- Link to bootstrap -->
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<style>
+    td {
+        padding: 10px;
+    }
+</style>
+<h2>Team Info</h2>
+<!--- Table that displays basic info (Manager,coach,name) -->
+<table class="table">
+    <tr>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Name:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Manager:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Coach:
+        </td>
+    </tr>
+    @foreach (DataRow dr in dt.Rows)
+    {
+        <tr>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Name"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Manager"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Coach"]
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+<br />
+<h2>Sponsors</h2>
+<!--- Table that displays sponsors -->
+<table class="table">
+    <tr>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Name:
+        </td>
+
+    </tr>
+    <!--- Finds sponsors based on team name -->
+    @foreach (DataRow dr in dt4.Rows)
+    {
+        if ((int)dr["Team"] == ViewBag.TeamID)
+        {
+            <tr>
+                <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                    @dr["Name"]
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+<br />
+<h2>Game History</h2>
+<!--- Table that displays games played and if they won or lost-->
+<table class="table">
+    <tr>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Winner:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Loser:
+        </td>
+    </tr>
+    <!--- Sorts through database to find all instances where specified team is selected -->
+    @foreach (DataRow dr in dt3.Rows)
+    {
+        if ((int)dr["Winner"] == ViewBag.TeamID || (int)dr["Loser"] == ViewBag.TeamID)
+        {
+            <tr>
+                <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                    @Html.Raw(tm.GetValue((int)dr["Winner"] - 1))
+                </td>
+                <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                    @Html.Raw(tm.GetValue((int)dr["Loser"] - 1))
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+<br />
+<h2>Players on Team</h2>
+<!--- Displays all players that are on given team -->
+<table class="table">
+    <tr>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Name:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Number:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Position:
+        </td>
+    </tr>
+
+    @foreach (DataRow dr in dt2.Rows)
+    {
+        <tr>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Name"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Number"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Position"]
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+<br /> <br />
+<!--- Return to team list page -->
+<a class="btn btn-info" onclick="location.href='@Url.Action("ListTeamDetails", "Home")'">Back To All Teams</a>

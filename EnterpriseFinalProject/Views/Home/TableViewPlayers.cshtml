@@ -1,0 +1,80 @@
+﻿<!--- Necessary imports -->
+@using System.Data
+@model EnterpriseFinalProject.Models.SearchClass
+
+<!--- Written By Christopher Reynolds -->
+<!--- This page dislays all of the players in the database -->
+<!--- Gets data from homeControllers viewbags -->
+@{
+    ViewBag.Title = "TableViewPlayers";
+    DataSet ds = ViewBag.Players;
+    DataTable dt = ds.Tables[0];
+    Array tm = ViewBag.TeamNames;
+}
+
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<h2>Show All Players</h2>
+<style>
+    td {
+        padding: 10px;
+    }
+</style>
+<!--- Gives option to go to different view which only shows players of certain position by position name input -->
+@using (Html.BeginForm("displayAllPlayersByPosition", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(Model => Model.pos)
+    <button type="submit">Find by Position</button>
+}
+<br />
+<a class="btn btn-info" onclick="location.href='@Url.Action("HomePage", "Home")'">Back To Home</a>
+<br />
+<br />
+
+<!--- Creates a table which holds all of the players in the database -->
+<table class="table">
+    <tr>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Name:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Number:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Team:
+        </td>
+        <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+            Position:
+        </td>
+    </tr>
+
+    @foreach (DataRow dr in dt.Rows)
+    {
+        <tr>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Name"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Number"]
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @Html.Raw(tm.GetValue((int)dr["TeamID"] - 1))
+            </td>
+            <td style="font-family: 'Times New Roman', Times, serif;
+                    font-size: large; border-style: inset; border-width: thin">
+                @dr["Position"]
+            </td>
+
+        </tr>
+
+    }
+
+</table>

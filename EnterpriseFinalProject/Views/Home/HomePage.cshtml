@@ -1,0 +1,22 @@
+﻿<!--- Created By Christopher Reynolds -->
+@{
+    ViewBag.Title = "HomePage";
+}
+<!--- Adds stylesheet for page display -->
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+</head>
+<div class="center-me">
+    <!--- Basic Info display -->
+    <h1>Hockey Info Browser</h1>
+    <img src="~/Images/players.png" style="width:500px;height:300px;">
+    <h3>From this application you can look at a variety of different information about the teams, as well as the players</h3>
+    <br />
+    <br />
+    <!--- Link to display of all teams -->
+    <a class="btn btn-info" onclick="location.href='@Url.Action("ListTeamDetails", "Home")'">Display Team Details</a>
+    <br /> <br />
+    <!--- Link to all players -->
+    <a class="btn btn-primary" onclick="location.href='@Url.Action("displayAllPlayers", "Home")'">List All Players</a>
+</div>
+
